@@ -3,21 +3,24 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4" v-for="curso in cursos" :key="curso.id">
-          <div class="card text-center border-info mb-3">
+          <div class="card justify-t border-info mb-3">
             <div class="card-body">
-              <h4 class="card-title">{{ curso.titulo }}</h4>
-              <p class="card-text">
+              <h4 class="card-title text-center">{{ curso.titulo }}</h4>
+              <p class="card-text text-center">
                 {{ curso.descripcion }}
               </p>
-              <p>{{ curso.contenido }}</p>
-              <button
-                href="#"
-                class="btn btn-primary position-absolute t start-5 translate-middle"
-              >
-                Entrar
-              </button>
-              >
+              <ol class="text-left">
+                <li
+                  class="text-left"
+                  v-for="item in curso.contenido.split(';')"
+                  :key="item"
+                >
+                  {{ item }}
+                </li>
+              </ol>
             </div>
+
+            <button href="#" class="btn btn-primary">Entrar</button>
           </div>
         </div>
       </div>
@@ -146,20 +149,9 @@ onMounted(() => {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .card-body {
-  height: 19rem;
+  height: 20rem;
 }
 
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 a {
   color: #42b983;
 }

@@ -23,6 +23,10 @@ import HelloWorld from "@/components/HelloWorld.vue";
 .img-logo {
   height: 65vh;
 }
+.home {
+  text-align: center;
+  /* // esto tengo que cambiar para que se aline a la izquierda */
+}
 
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
