@@ -131,19 +131,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { supabase } from "../lib/supabaseClient.js";
+// -----------esto es el get de todos los cursos hecho desde el front sin back
+// import { ref, onMounted } from "vue";
+// import { supabase } from "../lib/supabaseClient.js";
 
-const cursos = ref([]);
+// const cursos = ref([]);
 
-async function getCursos() {
-  const { data } = await supabase.from("cursos").select();
-  cursos.value = data;
-}
+// async function getCursos() {
+//   const { data } = await supabase.from("cursos").select();
+//   cursos.value = data;
+// }
 
-onMounted(() => {
-  getCursos();
-});
+// onMounted(() => {
+//   getCursos();
+// });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
