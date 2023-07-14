@@ -14,7 +14,9 @@
         </div>
         <button type="submit" class="btn">Sign Up</button>
         <div class="sign-link">
-          <p>Ya tienes cuenta <router-link to="/login">Sign In</router-link></p>
+          <p>
+            Ya tienes cuenta <router-link to="/register">Sign In</router-link>
+          </p>
         </div>
       </form>
     </div>
@@ -22,51 +24,27 @@
 </template>
 
 <script setup>
+import axios from "axios";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { supabase } from "../lib/supabaseClient"; // Importa el cliente de Supabase desde tu archivo de servicios
+const serverUrl = "http://127.0.0.1:5000";
 
 const email = ref("");
 const password = ref("");
-
-const router = useRouter();
 
 const handleSubmit = async (event) => {
   event.preventDefault();
 
   try {
-    // Registra al usuario utilizando Supabase Auth
-    const { user, error } = await supabase.auth.signUp({
+    const response = await axios.post(`${serverUrl}/login`, {
       email: email.value,
       password: password.value,
     });
 
-    if (error) {
-      console.error("Error de registro:", error.message);
-      return;
-    }
-
-    // Almacena información adicional en la tabla de usuarios
-    const { error: dataError } = await supabase.from("users").insert([
-      {
-        email: email.value,
-      },
-    ]);
-
-    if (dataError) {
-      console.error(
-        "Error al guardar información adicional:",
-        dataError.message
-      );
-      return;
-    }
-
-    console.log("Usuario registrado:", user);
-
-    // Después de registrar, puedes redirigir al usuario a la página de inicio de sesión
-    router.push("/login");
-  } catch (e) {
-    console.error("Error en el proceso de registro:", e.message);
+    // Maneja la respuesta del backend según sea necesario
+    const data = response.data;
+    console.log(data);
+  } catch (error) {
+    console.error("Error de inicio de sesión:", error.message);
   }
 };
 </script>

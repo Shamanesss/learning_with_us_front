@@ -4,10 +4,13 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
+
   <router-view />
+  <FooterComp />
 </template>
 <script setup>
 import NavBar from "./components/NavBar.vue";
+import FooterComp from "./components/FooterComp.vue";
 </script>
 <style>
 :root {

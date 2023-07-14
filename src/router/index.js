@@ -20,12 +20,47 @@ const routes = [
     name: 'login',
 
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+
+    component: () => import(/* webpackChunkName: "login" */ '../views/RegistreView.vue')
   }
-]
+  // --------------esto es par permitir  si estas autenticado seguir
+  // {
+  //   path: '/card/:id',
+  //   name: 'CardDetails',
+  //   component: CardDetailsView,
+  //   beforeEnter: (to, from, next) => {
+  //     // Verificar si el usuario está autenticado
+  //     if (isAuthenticated()) {
+  //       // Permitir el acceso a la ruta
+  //       next();
+  //     } else {
+  //       // Redirigir al login si el usuario no está autenticado
+  //       next({ name: 'Login' });
+  //     }
+  //   }
+  // },
+  // {
+  //   path: '/login',
+  //   name: 'Login',
+  //   component: LoginView
+  // }
+];
+
+
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+// function isAuthenticated() {
+//   const session = supabase.auth.session();
+//   return session !== null;
+// }
 
 export default router
