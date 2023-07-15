@@ -63,17 +63,14 @@ const form = ref({
   curso_id: "",
   titulo: "",
   lenguaje: "",
-  ejemplo_path: "",
+
   contenido: "",
 });
 
 const submitForm = async () => {
   try {
-    const response = await axios.post(
-      "http://127.0.0.1:5000/course",
-      form.value
-    );
-    console.log(response.data); // Maneja la respuesta del servidor según tus necesidades
+    const response = await axios.post("http://127.0.0.1:5000", form.value);
+    console.log(response.data);
   } catch (error) {
     console.error(error);
   }

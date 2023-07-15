@@ -1,15 +1,18 @@
 <template>
   <div class="hello">
     <div class="container">
-      <div class="row">
-        <div class="col-md-4" v-for="curso in cursos" :key="curso.id">
-          <div class="card justify-t border-info mb-3">
+      <div class="row card-deck">
+        <div class="col-md-4 card-row" v-for="curso in cursos" :key="curso.id">
+          <div class="card justify-t mb-3 equal-height-card">
+            <h4 class="card-title text-center p-2">{{ curso.titulo }}</h4>
             <div class="card-body">
-              <h4 class="card-title text-center">{{ curso.titulo }}</h4>
-              <p class="card-text text-center">
-                {{ curso.descripcion }}
-              </p>
-              <ol class="text-left">
+              <div class="description">
+                <p class="card-text text-center">
+                  {{ curso.descripcion }}
+                </p>
+                <hr />
+              </div>
+              <ul class="text-left list-unstyled">
                 <li
                   class="text-left"
                   v-for="item in curso.contenido.split(';')"
@@ -17,15 +20,19 @@
                 >
                   {{ item }}
                 </li>
-              </ol>
+              </ul>
             </div>
 
-            <button href="#" class="btn btn-primary">Entrar</button>
+            <button href="#" class="btn">Entrar</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ----------------------------------------------------------------------------------- -->
+
+  <!-- ------------------------------------------------------------------------------------------------------------- -->
 
   <ul>
     <li v-for="curso in cursos" :key="curso.id">
@@ -132,28 +139,68 @@
 
 <script setup>
 // -----------esto es el get de todos los cursos hecho desde el front sin back
-// import { ref, onMounted } from "vue";
-// import { supabase } from "../lib/supabaseClient.js";
+import { ref, onMounted } from "vue";
 
-// const cursos = ref([]);
+import axios from "axios";
 
-// async function getCursos() {
-//   const { data } = await supabase.from("cursos").select();
-//   cursos.value = data;
-// }
+const cursos = ref();
 
-// onMounted(() => {
-//   getCursos();
-// });
+const ApiUrl = "https://xzojqmxyrvvgxzoiwfcl.supabase.co/rest/v1";
+const apikey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6b2pxbXh5cnZ2Z3h6b2l3ZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3OTY2NzksImV4cCI6MjAwNDM3MjY3OX0.PKAup3OZhN8-BUibWOXdG2ruSsM6ss1MzzO_c2ut5mg";
+const autorizacion =
+  "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6b2pxbXh5cnZ2Z3h6b2l3ZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3OTY2NzksImV4cCI6MjAwNDM3MjY3OX0.PKAup3OZhN8-BUibWOXdG2ruSsM6ss1MzzO_c2ut5mg";
+// const ApiUrl = VUE_APP_API_URL;
+// const autorizacion = VUE_APP_AUTORIZACION;
+// const apikey = VUE_APP_API_KEY;
+// console.log(process.env.VUE_APP_API_URL);
+
+async function getCursos() {
+  try {
+    const response = await axios.get(`${ApiUrl}/cursos?select=*`, {
+      headers: {
+        apikey: apikey,
+        Authorization: autorizacion,
+      },
+    }); // Cambia la URL de la API según tu configuración
+    cursos.value = response.data;
+    console.log("****************", cursos.value);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+onMounted(() => {
+  getCursos();
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.card-body {
+/*
+ .card-body {
   height: 20rem;
+} */
+.equal-height-card {
+  height: 85%;
+  border-color: #4e3315;
+  margin-bottom: 10em !important;
+}
+
+button {
+  background: #848d68;
+  color: white;
+}
+button:hover {
+  opacity: 0.7;
+  background: #9faa7c;
+  color: white;
 }
 
 a {
   color: #42b983;
+}
+.row {
+  margin-bottom: 10em !important;
 }
 </style>
