@@ -26,7 +26,51 @@ const routes = [
     name: 'register',
 
     component: () => import(/* webpackChunkName: "login" */ '../views/RegistreView.vue')
+  },
+  {
+    path: '/leccion/:id',
+    name: 'leccion',
+    component: () => import(/* webpackChunkName: "login" */ '../views/LeccionComp.vue'),
+    props: true
+  },
+  {
+    path: '/lista-lecciones',
+    name: 'lista-lecciones',
+    component: () => import(/* webpackChunkName: "login" */ '../views/ListaLecciones.vue'),
+
   }
+  //,
+
+  // {
+  //   path: '/html',
+  //   name: 'html',
+  //   component: () => import('./components/HtmlLecciones.vue'),
+  // },
+  // {
+  //   path: '/javascript',
+  //   name: 'javascript',
+  //   component: () => import('./components/JavaScriptLecciones.vue'),
+  // },
+  // {
+  //   path: '/css',
+  //   name: 'css',
+  //   component: () => import('./components/CssLecciones.vue'),
+  // },
+  // {
+  //   path: '/python',
+  //   name: 'python',
+  //   component: () => import('./components/PythonLecciones.vue'),
+  // },
+  // {
+  //   path: '/java',
+  //   name: 'java',
+  //   component: () => import('./components/JavaLecciones.vue'),
+  // }
+
+
+
+
+
   // --------------esto es par permitir  si estas autenticado seguir
   // {
   //   path: '/card/:id',

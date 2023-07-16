@@ -13,6 +13,9 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 </script>
 <style scope>
+h1 {
+  padding: 2%;
+}
 .home-logo {
   background-image: url(../assets/bg_degradado.png);
   background-size: cover;

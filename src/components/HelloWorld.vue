@@ -22,8 +22,9 @@
                 </li>
               </ul>
             </div>
-
-            <button href="#" class="btn">Entrar</button>
+            <div class="card-footer">
+              <button @click="$router.push('/')">Entrar</button>
+            </div>
           </div>
         </div>
       </div>
@@ -39,106 +40,10 @@
       {{ curso.titulo }}
     </li>
   </ul>
-  <p>
-    For a guide and recipes on how to configure / customize this project,<br />
-    check out the
-    <a href="../assets/logo_br.jpg" target="_blank" rel="noopener"
-      >vue-cli documentation</a
-    >.
-  </p>
-  <h3>Installed CLI Plugins</h3>
-  <ul>
-    <li>
-      <a
-        href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-        target="_blank"
-        rel="noopener"
-        >babel</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-        target="_blank"
-        rel="noopener"
-        >router</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-        target="_blank"
-        rel="noopener"
-        >eslint</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest"
-        target="_blank"
-        rel="noopener"
-        >unit-jest</a
-      >
-    </li>
-  </ul>
-  <h3>Essential Links</h3>
-  <ul>
-    <li>
-      <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-    </li>
-    <li>
-      <a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a>
-    </li>
-    <li>
-      <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-        >Community Chat</a
-      >
-    </li>
-    <li>
-      <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-        >Twitter</a
-      >
-    </li>
-    <li>
-      <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
-    </li>
-  </ul>
-  <h3>Ecosystem</h3>
-  <ul>
-    <li>
-      <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-        >vue-router</a
-      >
-    </li>
-    <li>
-      <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-    </li>
-    <li>
-      <a
-        href="https://github.com/vuejs/vue-devtools#vue-devtools"
-        target="_blank"
-        rel="noopener"
-        >vue-devtools</a
-      >
-    </li>
-    <li>
-      <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-        >vue-loader</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://github.com/vuejs/awesome-vue"
-        target="_blank"
-        rel="noopener"
-        >awesome-vue</a
-      >
-    </li>
-  </ul>
 </template>
 
 <script setup>
-// -----------esto es el get de todos los cursos hecho desde el front sin back
+// -----------esto es el get de todos los cursos hecho desde el front sin back funciona con la api-------------------
 import { ref, onMounted } from "vue";
 
 import axios from "axios";
@@ -153,6 +58,7 @@ const autorizacion =
 //const ApiUrl = VUE_APP_API_URL;
 //const autorizacion = VUE_APP_AUTORIZACION;
 //const apikey = VUE_APP_API_KEY;
+
 console.log(process.env.VUE_APP_API_URL);
 
 async function getCursos() {
@@ -169,10 +75,32 @@ async function getCursos() {
     console.error(error);
   }
 }
+
+// --------------------------esto funcion con la api-----------------------------
+
 // async function getCursos() {
 //   try {
 //     const response = await axios.get(`http://127.0.0.1:5000/cursos?select=*`); // Cambia la URL de la API según tu configuración
 //     cursos.value = response.data;
+//     console.log("****************", cursos.value);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// import { ref, onMounted } from "vue";
+// import { supabase } from "../supabaseClient";
+
+// const cursos = ref([]);
+
+// async function getCursos() {
+//   try {
+//     const { data, error } = await supabase.from("cursos").select("*");
+
+//     if (error) {
+//       throw new Error(error.message);
+//     }
+//     cursos.value = data;
 //     console.log("****************", cursos.value);
 //   } catch (error) {
 //     console.error(error);
@@ -199,11 +127,16 @@ onMounted(() => {
 button {
   background: #848d68;
   color: white;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 75%;
+  border-radius: 1rem;
 }
 button:hover {
   opacity: 0.7;
   background: #3e5e84;
   color: white;
+  padding: 0.5rem;
 }
 
 a {
@@ -214,8 +147,10 @@ a {
   margin: 0;
   color: white;
   border-radius: 0.3rem;
+  padding: 2rem;
 }
-.card-body {
+.card-body,
+.card-footer {
   background-color: rgb(254, 239, 220);
 }
 </style>

@@ -10,3 +10,22 @@
     </div>
   </div>
 </template>
+<style>
+.container {
+  display: flex;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px;
+}
+</style>
