@@ -1,8 +1,8 @@
 <template>
   <div class="home">
+    <h1>"Aprende a programar facilmente"</h1>
     <div class="home-logo">
       <img alt="Vue logo" class="img-logo" src="../assets/logo_ok.png" />
-      <p>"Aprende a programar facilmente"</p>
     </div>
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
@@ -19,6 +19,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
   background-position: center;
   width: 60rem;
   margin: auto;
+  border-radius: 1.2rem;
 }
 .img-logo {
   height: 65vh;
@@ -26,6 +27,9 @@ import HelloWorld from "@/components/HelloWorld.vue";
 .home {
   text-align: center;
   /* // esto tengo que cambiar para que se aline a la izquierda */
+}
+.home-logo {
+  margin-bottom: 0.6rem;
 }
 
 /* Media Query for Mobile Devices */

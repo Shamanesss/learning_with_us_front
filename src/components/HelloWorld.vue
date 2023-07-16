@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row card-deck">
         <div class="col-md-4 card-row" v-for="curso in cursos" :key="curso.id">
-          <div class="card justify-t mb-3 equal-height-card">
-            <h4 class="card-title text-center p-2">{{ curso.titulo }}</h4>
+          <div class="card equal-height-card">
+            <h4 class="card-titles text-center">{{ curso.titulo }}</h4>
             <div class="card-body">
               <div class="description">
                 <p class="card-text text-center">
@@ -150,10 +150,10 @@ const apikey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6b2pxbXh5cnZ2Z3h6b2l3ZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3OTY2NzksImV4cCI6MjAwNDM3MjY3OX0.PKAup3OZhN8-BUibWOXdG2ruSsM6ss1MzzO_c2ut5mg";
 const autorizacion =
   "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6b2pxbXh5cnZ2Z3h6b2l3ZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3OTY2NzksImV4cCI6MjAwNDM3MjY3OX0.PKAup3OZhN8-BUibWOXdG2ruSsM6ss1MzzO_c2ut5mg";
-// const ApiUrl = VUE_APP_API_URL;
-// const autorizacion = VUE_APP_AUTORIZACION;
-// const apikey = VUE_APP_API_KEY;
-// console.log(process.env.VUE_APP_API_URL);
+//const ApiUrl = VUE_APP_API_URL;
+//const autorizacion = VUE_APP_AUTORIZACION;
+//const apikey = VUE_APP_API_KEY;
+console.log(process.env.VUE_APP_API_URL);
 
 async function getCursos() {
   try {
@@ -169,6 +169,15 @@ async function getCursos() {
     console.error(error);
   }
 }
+// async function getCursos() {
+//   try {
+//     const response = await axios.get(`http://127.0.0.1:5000/cursos?select=*`); // Cambia la URL de la API según tu configuración
+//     cursos.value = response.data;
+//     console.log("****************", cursos.value);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 onMounted(() => {
   getCursos();
@@ -182,9 +191,9 @@ onMounted(() => {
   height: 20rem;
 } */
 .equal-height-card {
-  height: 85%;
-  border-color: #4e3315;
-  margin-bottom: 10em !important;
+  height: 99%;
+  border-color: #848d68;
+  margin-bottom: 1.2rem;
 }
 
 button {
@@ -193,14 +202,20 @@ button {
 }
 button:hover {
   opacity: 0.7;
-  background: #9faa7c;
+  background: #3e5e84;
   color: white;
 }
 
 a {
   color: #42b983;
 }
-.row {
-  margin-bottom: 10em !important;
+.card-titles {
+  background-color: #3e5e84;
+  margin: 0;
+  color: white;
+  border-radius: 0.3rem;
+}
+.card-body {
+  background-color: rgb(254, 239, 220);
 }
 </style>
