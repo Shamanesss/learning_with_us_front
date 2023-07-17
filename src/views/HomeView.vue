@@ -4,6 +4,7 @@
     <div class="home-logo">
       <img alt="Vue logo" class="img-logo" src="../assets/logo_ok.png" />
     </div>
+    <h2>Lenguajes de Programación</h2>
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>

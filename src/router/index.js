@@ -28,13 +28,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/RegistreView.vue')
   },
   {
-    path: '/leccion/:id',
+    path: '/cursos/:idcursos/Lecciones/:idlecciones',
     name: 'leccion',
-    component: () => import(/* webpackChunkName: "login" */ '../views/LeccionComp.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '../views/LeccionView.vue'),
     props: true
   },
   {
-    path: '/lista-lecciones',
+    path: '/lecciones/:idlecciones',
     name: 'lista-lecciones',
     component: () => import(/* webpackChunkName: "login" */ '../views/ListaLecciones.vue'),
 
