@@ -30,4 +30,9 @@
 #color_item .color_item {
   color: white;
 }
+.codigo {
+  color: white;
+  font-weight: bold;
+  font-size: large;
+}
 </style>

@@ -18,6 +18,7 @@ import FooterComp from "./components/FooterComp.vue";
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: var(--blue);
+  box-sizing: border-box;
 }
 
 nav {

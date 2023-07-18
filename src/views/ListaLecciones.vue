@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <h2 v-if="indices.length > 0">{{ indices[0].titulo }}</h2>
-    <div v-for="indice in indices" :key="indice.idlecciones">
-      <ul>
-        <li>{{ indice.listado }}</li>
-      </ul>
+  <div class="container">
+    <div class="left-column"></div>
+    <div class="right-column">
+      <h2 v-if="indices.length > 0">{{ indices[0].titulo }}</h2>
+      <div v-for="indice in indices" :key="indice.idlecciones">
+        <ul>
+          <li>{{ indice.listado }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -33,4 +36,55 @@ async function getLecciones() {
 
 getLecciones();
 </script>
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.left-column {
+  flex: 1;
+  background-image: url(../assets/Diseno.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.right-column {
+  flex: 2;
+  margin-left: 1rem;
+}
+h2 {
+  text-align: center;
+  padding: 1rem;
+}
+/* Media queries para ajustar estilos en diferentes tamaños de pantalla */
+@media screen and (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-column {
+    background-image: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .left-column {
+    height: auto;
+    background-position: center;
+    padding: 2.52rem;
+  }
+}
+
+@media screen and (width: 1280px) and (height: 800px) {
+  .left-column {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 2rem;
+    margin: 20rem;
+  }
+}
+</style>
