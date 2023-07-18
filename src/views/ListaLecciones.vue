@@ -78,13 +78,12 @@ h2 {
   }
 }
 
-@media screen and (width: 1280px) and (height: 800px) {
+@media screen and (min-width: 1024px) {
   .left-column {
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
-    padding: 2rem;
-    margin: 20rem;
+
+    margin: 0;
   }
 }
 </style>
