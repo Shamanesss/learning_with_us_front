@@ -1,35 +1,33 @@
 <template>
-  <div class="container">
-    <div class="left-column">
-      <img src="ruta-a-tu-imagen" alt="Foto" class="photo" />
-    </div>
-    <div class="right-column">
-      <h1>Título</h1>
-      <p>Párrafo</p>
-    </div>
+  <div class="leccion">
+    <h1>{{ leccion.titulo }}</h1>
+    <p>{{ leccion.contenido }}</p>
   </div>
 
-  <div>
-    <h1></h1>
-    <p></p>
-    <button @click="$router.push('/')">Volver a la lista de lecciones</button>
-  </div>
+  <button @click="$router.push('/')">Volver a la lista de lecciones</button>
 </template>
-<style scoped>
-.container {
-  display: flex;
-  flex-direction: row;
+
+<script setup>
+import { ref } from "vue";
+import axios from "axios";
+import { useRoute } from "vue-router";
+
+const leccion = ref({});
+const route = useRoute();
+const idleccion = route.params.idleccion;
+
+async function getLeccion() {
+  try {
+    let response = await axios.get(
+      `http://127.0.0.1:5000/leccion/${idleccion}`
+    );
+    leccion.value = await response.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-.left-column {
-  flex: 1;
-}
+getLeccion();
+</script>
 
-.photo {
-  width: 33.33%;
-}
-
-.right-column {
-  flex: 2;
-}
-</style>
+<style scoped></style>

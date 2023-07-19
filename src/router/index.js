@@ -28,7 +28,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/RegistreView.vue')
   },
   {
-    path: '/cursos/:idcursos/Lecciones/:idlecciones',
+    path: '/leccion/:idleccion',
     name: 'leccion',
     component: () => import(/* webpackChunkName: "login" */ '../views/LeccionView.vue'),
     props: true
