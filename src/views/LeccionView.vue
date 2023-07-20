@@ -14,7 +14,7 @@
     </ul>
   </div>
 
-  <button @click="$router.push('/')">Volver a la lista de lecciones</button>
+  <button @click="$router.go(-1)">Volver a la lista de lecciones</button>
 </template>
 
 <script setup>
