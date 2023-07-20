@@ -1,7 +1,17 @@
 <template>
   <div class="leccion">
     <h1>{{ leccion.titulo }}</h1>
-    <p>{{ leccion.contenido }}</p>
+  </div>
+  <div v-if="leccion.contenido">
+    <ul class="text-left list-unstyled">
+      <li
+        class="text-left"
+        v-for="item in leccion.contenido.split(';')"
+        :key="item"
+      >
+        {{ item }}
+      </li>
+    </ul>
   </div>
 
   <button @click="$router.push('/')">Volver a la lista de lecciones</button>
