@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <div class="left-column"></div>
+    <div class="left-column">
+      <img src="../assets/Diseno.png" alt="" />
+    </div>
     <div class="right-column">
       <h2 v-if="indices.length > 0">{{ indices[0].titulo }}</h2>
       <div v-for="indice in indices" :key="indice.idlecciones">
@@ -43,21 +45,24 @@ getLecciones();
 <style scoped>
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: rox;
   margin-left: 0;
   padding-left: 0;
+  min-height: 100vh;
 }
-
 .left-column {
   flex: 1;
-  background-image: url(../assets/Diseno.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-column {
   flex: 2;
   margin-left: 1rem;
+}
+img {
+  height: 100%; /* Asegurar que la imagen ocupe todo el espacio dentro de la columna izquierda */
+  /* La imagen ocupará todo el ancho de la columna izquierda */
 }
 h2 {
   text-align: center;
@@ -74,19 +79,9 @@ h2 {
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .left-column {
-    height: auto;
-    background-position: center;
-    padding: 2.52rem;
-  }
-}
-
 @media screen and (min-width: 1024px) {
-  .left-column {
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0;
+  img {
+    max-width: 100%;
   }
 }
 </style>

@@ -1,7 +1,13 @@
 <template>
-  <nav class="navbar-expand-lg color_bg" id="color_item">
-    <div>
-      <ul class="nav justify-content-center">
+  <nav class="navbar navbar-expand-lg color_bg" id="color_item">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="../assets/log_navbar_white.png" alt="" class="imagen-logo" />
+      </a>
+
+      <!-- Lista de enlaces -->
+      <ul class="navbar-nav justify-content-md-start justify-content-center">
         <li class="nav-item">
           <a class="nav-link active color_item" aria-current="page" href="/"
             >HOME</a
@@ -17,22 +23,17 @@
     </div>
   </nav>
 </template>
+
 <script setup></script>
 <style scoped>
-.nav .nav {
-  display: flex;
-  justify-content: center;
-  color: aliceblue;
-}
 .color_bg {
   background-color: #3e5e84;
 }
 #color_item .color_item {
   color: white;
 }
-.codigo {
-  color: white;
-  font-weight: bold;
-  font-size: large;
+
+.imagen-logo {
+  width: 5rem;
 }
 </style>

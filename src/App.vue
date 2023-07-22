@@ -19,6 +19,9 @@ import FooterComp from "./components/FooterComp.vue";
   /* text-align: center; */
   color: var(--blue);
   box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
 }
 
 nav {
