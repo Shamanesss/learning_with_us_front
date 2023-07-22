@@ -17,23 +17,10 @@ import FooterComp from "./components/FooterComp.vue";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: var(--blue);
+  color: #3e5e84;
   box-sizing: border-box;
 
   margin: 0;
   padding: 0;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: var(--blue);
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

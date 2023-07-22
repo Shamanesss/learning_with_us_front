@@ -54,6 +54,7 @@ const handleSubmit = async (event) => {
   justify-content: center;
   align-items: center;
   height: 80vh;
+  background-image: url(../assets/bg_degradado.png);
 }
 
 .form-wrapper {
@@ -62,7 +63,7 @@ const handleSubmit = async (event) => {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 
 .input-group {
@@ -123,68 +124,4 @@ h2 {
   background-color: #2773d0;
   color: white;
 }
-
-/* .wrapper {
-  position: relative;
-  width: 400px;
-  height: 500px;
-} 
-/*
-.form-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-
-
-.input-group {
-  position: relative;
-  width: 320px;
-  margin: 30px 0;
-}
-
-.input-group input {
-  width: 100%;
-  height: 30px;
-  font-size: 16px;
-  color: #333;
-  padding: 0 10px;
-  background: transparent;
-  border: 1px solid #333;
-  outline: none;
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-
-.sign-link {
-  font-size: 14px;
-  text-align: center;
-  margin: 25px 0;
-}
-
-.sign-link p {
-  color: #333;
-}
-
-.sign-link p a {
-  color: #e91e63;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.sign-link p a:hover {
-  text-decoration: underline;
-} -->*/
 </style>

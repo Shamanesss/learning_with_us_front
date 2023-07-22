@@ -5,8 +5,8 @@
     </div>
     <div class="right-column">
       <h2 v-if="indices.length > 0">{{ indices[0].titulo }}</h2>
-      <div v-for="indice in indices" :key="indice.idlecciones">
-        <ul>
+      <div v-for="indice in indices" :key="indice.idlecciones" class="puntos">
+        <ul class="centered-list">
           <a :href="`/leccion/${indice.idlecciones}`"
             ><li>
               {{ indice.listado }}
@@ -49,6 +49,7 @@ getLecciones();
   margin-left: 0;
   padding-left: 0;
   min-height: 100vh;
+  min-width: 100vw;
 }
 .left-column {
   flex: 1;
@@ -58,10 +59,22 @@ getLecciones();
 
 .right-column {
   flex: 2;
-  margin-left: 1rem;
-  background-color: bisque;
-  background-image: url("../assets/alargado.png");
+  margin: 3rem;
+  border: 1rem solid#3e5e84;
+  background-color: rgb(225, 222, 205);
+  border-radius: 5rem;
+  text-align: center;
 }
+
+.puntos {
+  text-align: center;
+}
+
+.centered-list {
+  text-align: left;
+  display: inline-bloc;
+}
+
 img {
   height: 100%;
   max-width: 100%;
@@ -69,6 +82,7 @@ img {
 h2 {
   text-align: center;
   padding: 1rem;
+  text-decoration-line: underline;
 }
 @media (max-width: 767px) {
   .left-column {
@@ -88,7 +102,6 @@ h2 {
 
   .right-column {
     flex: 2;
-    margin-left: 1rem;
   }
 
   img {
