@@ -59,6 +59,8 @@ getLecciones();
 .right-column {
   flex: 2;
   margin-left: 1rem;
+  background-color: bisque;
+  background-image: url("../assets/alargado.png");
 }
 img {
   height: 100%;
