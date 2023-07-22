@@ -118,14 +118,11 @@ button {
 }
 button:hover {
   opacity: 0.7;
-  background: #3e5e84;
+  background-color: #3e5e84;
   color: white;
   padding: 0.5rem;
 }
 
-a {
-  color: #42b983;
-}
 .card-titles {
   background-color: #3e5e84;
   margin: 0;
