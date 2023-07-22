@@ -61,27 +61,38 @@ getLecciones();
   margin-left: 1rem;
 }
 img {
-  height: 100%; /* Asegurar que la imagen ocupe todo el espacio dentro de la columna izquierda */
-  /* La imagen ocupará todo el ancho de la columna izquierda */
+  height: 100%;
+  max-width: 100%;
 }
 h2 {
   text-align: center;
   padding: 1rem;
 }
-/* Media queries para ajustar estilos en diferentes tamaños de pantalla */
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
+  .left-column {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
   .container {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .left-column {
-    background-image: none;
+    flex: 1.5;
+    display: flex;
+    align-items: center;
   }
-}
 
-@media screen and (min-width: 1024px) {
+  .right-column {
+    flex: 2;
+    margin-left: 1rem;
+  }
+
   img {
-    max-width: 100%;
+    display: block;
+    width: 100%;
+    height: 100vh;
   }
 }
 </style>
