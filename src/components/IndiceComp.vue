@@ -61,7 +61,8 @@ getLecciones();
   flex: 2;
   margin: 3rem;
   border: 1rem solid#3e5e84;
-  background-color: rgb(225, 222, 205);
+
+  background-color: rgb(254, 239, 220);
   border-radius: 5rem;
   text-align: center;
 }

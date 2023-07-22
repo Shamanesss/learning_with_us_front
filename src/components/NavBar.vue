@@ -17,7 +17,7 @@
           <a class="nav-link color_item" href="/login">LOGIN</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link color_item" href="/about">ABOUT</a>
+          <a class="nav-link color_item" href="/course">CURSOS</a>
         </li>
       </ul>
     </div>

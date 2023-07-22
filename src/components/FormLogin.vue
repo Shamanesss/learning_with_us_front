@@ -54,12 +54,13 @@ const handleSubmit = async (event) => {
   justify-content: center;
   align-items: center;
   height: 80vh;
-  background-image: url(../assets/bg_degradado.png);
 }
 
 .form-wrapper {
   width: 400px;
-
+  background-image: url(../assets/bg_degradado.png);
+  background-position: center;
+  background-size: cover;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;

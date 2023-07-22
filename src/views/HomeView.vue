@@ -5,17 +5,19 @@
       <img alt="Vue logo" class="img-logo" src="../assets/logo_ok.png" />
     </div>
     <h2>Lenguajes de Programación</h2>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HomeComp />
   </div>
 </template>
 
 <script setup>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import HomeComp from "@/components/HomeComp.vue";
 </script>
 <style scope>
-h1 {
+h1,
+h2 {
   padding: 2%;
+  text-align: center;
 }
 .home-logo {
   background-image: url(../assets/bg_degradado.png);
@@ -27,10 +29,10 @@ h1 {
 }
 .img-logo {
   height: 65vh;
+  text-align: center;
 }
 .home {
   text-align: center;
-  /* // esto tengo que cambiar para que se aline a la izquierda */
 }
 .home-logo {
   margin-bottom: 0.6rem;

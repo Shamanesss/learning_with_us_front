@@ -24,7 +24,7 @@
             </div>
             <div class="card-footer">
               <router-link :to="`/lecciones/${curso.id}`"
-                ><button>Entrar</button></router-link
+                ><button class="button">Entrar</button></router-link
               >
             </div>
           </div>
@@ -32,16 +32,6 @@
       </div>
     </div>
   </div>
-
-  <!-- ----------------------------------------------------------------------------------- -->
-
-  <!-- ------------------------------------------------------------------------------------------------------------- -->
-
-  <ul>
-    <li v-for="curso in cursos" :key="curso.id">
-      {{ curso.titulo }}
-    </li>
-  </ul>
 </template>
 
 <script setup>
@@ -98,10 +88,9 @@ getCursos();
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/*
- .card-body {
-  height: 20rem;
-} */
+.hello {
+  margin-bottom: 2rem;
+}
 .equal-height-card {
   height: 99%;
   border-color: #848d68;
