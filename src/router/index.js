@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import InicioView from '../views/HomeView.vue'
+import UnauthorizedView from '../views/UnauthorizedView.vue'
+//import { supabase } from "../Clients/supabase"
+
+//let localUser;
+
+
+
 
 const routes = [
   {
@@ -8,26 +15,32 @@ const routes = [
     component: InicioView
   },
   {
+    path: '/secret',
+    name: 'secret',
+    component: () => import('../views/CursosSecret.vue')
+  },
+
+  {
     path: '/course',
     name: 'course',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/CursosView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/CursosView.vue'),
+    //meta: { requiresAuth: true }
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
+
   {
     path: '/login',
     name: 'login',
 
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
+  },
+  {
+    path: '/unauthotrized',
+    name: 'unauthorized',
+
+    component: UnauthorizedView
   },
   {
     path: '/register',
@@ -47,59 +60,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/ListaLecciones.vue'),
 
   }
-  //,
 
-  // {
-  //   path: '/html',
-  //   name: 'html',
-  //   component: () => import('./components/HtmlLecciones.vue'),
-  // },
-  // {
-  //   path: '/javascript',
-  //   name: 'javascript',
-  //   component: () => import('./components/JavaScriptLecciones.vue'),
-  // },
-  // {
-  //   path: '/css',
-  //   name: 'css',
-  //   component: () => import('./components/CssLecciones.vue'),
-  // },
-  // {
-  //   path: '/python',
-  //   name: 'python',
-  //   component: () => import('./components/PythonLecciones.vue'),
-  // },
-  // {
-  //   path: '/java',
-  //   name: 'java',
-  //   component: () => import('./components/JavaLecciones.vue'),
-  // }
-
-
-
-
-
-  // --------------esto es par permitir  si estas autenticado seguir
-  // {
-  //   path: '/card/:id',
-  //   name: 'CardDetails',
-  //   component: CardDetailsView,
-  //   beforeEnter: (to, from, next) => {
-  //     // Verificar si el usuario está autenticado
-  //     if (isAuthenticated()) {
-  //       // Permitir el acceso a la ruta
-  //       next();
-  //     } else {
-  //       // Redirigir al login si el usuario no está autenticado
-  //       next({ name: 'Login' });
-  //     }
-  //   }
-  // },
-  // {
-  //   path: '/login',
-  //   name: 'Login',
-  //   component: LoginView
-  // }
 ];
 
 
@@ -108,11 +69,32 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
 
-// function isAuthenticated() {
-//   const session = supabase.auth.session();
-//   return session !== null;
+//get user
+
+// async function getUser(next) {
+// 	localUser = await supabase.auth.getSession();
+// 	if (localUser.data.session == null) {
+// 		next('/unauthorized')
+// 	}
+// 	else {
+// 		next();
+// 	}
 // }
+
+
+
+//auth requirements
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.requiresAuth) {
+// getUsers(next)
+//     console.log("requires Auth");
+//   }
+//   else {
+//     next(); //allow access to public pages without auth check
+//   }
+// });
+
 
 export default router

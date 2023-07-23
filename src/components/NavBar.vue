@@ -17,6 +17,9 @@
           <a class="nav-link color_item" href="/login">LOGIN</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link color_item" href="/secret">secret</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link color_item" href="/course">CURSOS</a>
         </li>
       </ul>

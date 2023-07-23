@@ -1,52 +1,105 @@
 <template>
   <div class="wrapper">
     <div class="form-wrapper sign-up">
-      <form action="/register" method="POST" @submit="handleSubmit">
-        <h2>Registro</h2>
+      <h2>Registro</h2>
 
-        <div class="input-group">
-          <input type="email" required name="Email" v-model="email" />
-          <label>Correo</label>
-        </div>
-        <div class="input-group">
-          <input type="password" required name="Password" v-model="password" />
-          <label>Contraseña</label>
-        </div>
-        <button type="submit" class="btn">Sign Up</button>
-        <div class="sign-link">
-          <p>
-            Ya tienes cuenta <router-link to="/register">Sign In</router-link>
-          </p>
-        </div>
-      </form>
+      <div class="input-group">
+        <input type="name" required name="name" v-model="name" />
+        <label for="name">Name</label>
+      </div>
+      <div class="input-group">
+        <input type="email" required name="Email" v-model="email" />
+        <label for="email">Correo</label>
+      </div>
+      <div class="input-group">
+        <input type="password" required name="Password" v-model="password" />
+        <label for="password">Contraseña</label>
+      </div>
+      <button class="btn">Sign Up</button>
+      <button @click="createAccount" class="btn">Create</button>
+      <button @click="login" class="btn">login</button>
+      <button @click="seeCurrentUser" class="btn">See user</button>
+      <button @click="logout" type="submit" class="btn">logout</button>
+      <div class="sign-link">
+        <p>
+          Ya tienes cuenta <router-link to="/register">Sign In</router-link>
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import axios from "axios";
 import { ref } from "vue";
-const serverUrl = "http://127.0.0.1:5000";
+import { supabase } from "../Clients/supabase";
 
-const email = ref("");
-const password = ref("");
+//connect inputs
+let email = ref("");
+let password = ref("");
+let name = ref("");
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+//Create account
 
-  try {
-    const response = await axios.post(`${serverUrl}/login`, {
-      email: email.value,
-      password: password.value,
-    });
-
-    // Maneja la respuesta del backend según sea necesario
-    const data = response.data;
+async function createAccount() {
+  const { data, error } = await supabase.auth.signUp({
+    email: email.value,
+    password: password.value,
+    options: {
+      data: {
+        full_name: name.value,
+      },
+    },
+  });
+  if (error) {
+    console.log(error);
+  } else {
     console.log(data);
-  } catch (error) {
-    console.error("Error de inicio de sesión:", error.message);
   }
-};
+}
+//login
+async function login() {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value,
+  });
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+}
+//seeCurrentUser
+async function seeCurrentUser() {
+  const localUser = await supabase.auth.getSession();
+  console.log(localUser);
+}
+//logout
+async function logout() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Logout has been successfull");
+  }
+}
+
+// async function getCursos() {
+//   try {
+//     const response = await axios.get(`${ApiUrl}/cursos?select=*`, {
+//       headers: {
+//         apikey: apikey,
+//         Authorization: autorizacion,
+//       },
+//     }); // Cambia la URL de la API según tu configuración
+//     cursos.value = await response.data;
+//     console.log("****************", cursos.value);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+// onMounted(() => {
+//   getUsers();
+// });
 </script>
 <style scoped>
 .wrapper {
