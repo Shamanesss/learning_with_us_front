@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left-column">
-      <img src="../assets/Diseno.png" alt="" />
+      <img src="../assets/Diseno.png" alt="imagen lateral" />
     </div>
     <div class="right-column">
       <h2 v-if="indices.length > 0">{{ indices[0].titulo }}</h2>
@@ -72,8 +72,10 @@ getLecciones();
 }
 
 .centered-list {
-  text-align: left;
-  display: inline-bloc;
+  text-align: center;
+  display: inline-block;
+    font-size: 2rem;
+    list-style: none;
 }
 
 img {
@@ -88,6 +90,14 @@ h2 {
 @media (max-width: 767px) {
   .left-column {
     display: none;
+    
+  }
+  .centered-list{
+    font-size: 1rem;
+
+  }
+  .right-column{
+    margin: 0.5rem;
   }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -109,6 +119,10 @@ h2 {
     display: block;
     width: 100%;
     height: 100vh;
+  }
+  .centered-list{
+    font-size: 1.5rem;
+
   }
 }
 </style>

@@ -38,7 +38,7 @@
       </p>
       <br />
     </div>
-    <router-link to="/login"><button>Entrar</button></router-link>
+    <router-link to="/cursos"><button>Entrar</button></router-link>
   </div>
 </template>
 <script setup></script>
