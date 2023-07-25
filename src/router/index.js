@@ -14,12 +14,7 @@ const routes = [
     name: 'home',
     component: InicioView
   },
-  {
-    path: '/secret',
-    name: 'secret',
-    component: () => import('../views/CursosSecret.vue'),
-    meta: { requiresAuth: true }
-  },
+
 
   {
     path: '/course',
@@ -37,12 +32,7 @@ const routes = [
 
     component: LoginView
   },
-  // {
-  //   path: '/sinautorizacion',
-  //   name: 'sinautorizacion',
 
-  //   component: UnauthorizedView
-  // },
   {
     path: '/register',
     name: 'register',

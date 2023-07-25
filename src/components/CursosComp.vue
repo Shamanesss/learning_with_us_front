@@ -40,7 +40,7 @@ import { ref } from "vue";
 const cursos = ref();
 async function getCursos() {
   try {
-    let response = await axios.get("https://back-learning.onrender.com/cursos");
+    let response = await axios.get("http://127.0.0.1:5000/cursos");
     cursos.value = await response.data;
     console.log(cursos.value);
   } catch (error) {
