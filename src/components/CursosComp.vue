@@ -35,46 +35,12 @@
 </template>
 
 <script setup>
-// // -----------esto es el get de todos los cursos hecho desde el front sin back funciona con la api-------------------
-// import { ref, onMounted } from "vue";
-
-// import axios from "axios";
-
-// const cursos = ref();
-
-// const ApiUrl = "https://xzojqmxyrvvgxzoiwfcl.supabase.co/rest/v1";
-// const apikey =
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6b2pxbXh5cnZ2Z3h6b2l3ZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3OTY2NzksImV4cCI6MjAwNDM3MjY3OX0.PKAup3OZhN8-BUibWOXdG2ruSsM6ss1MzzO_c2ut5mg";
-// const autorizacion =
-//   "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6b2pxbXh5cnZ2Z3h6b2l3ZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3OTY2NzksImV4cCI6MjAwNDM3MjY3OX0.PKAup3OZhN8-BUibWOXdG2ruSsM6ss1MzzO_c2ut5mg";
-//const ApiUrl = VUE_APP_API_URL;
-//const autorizacion = VUE_APP_AUTORIZACION;
-//const apikey = VUE_APP_API_KEY;
-
-// async function getCursos() {
-//   try {
-//     const response = await axios.get(`${ApiUrl}/cursos?select=*`, {
-//       headers: {
-//         apikey: apikey,
-//         Authorization: autorizacion,
-//       },
-//     }); // Cambia la URL de la API según tu configuración
-//     cursos.value = await response.data;
-//     console.log("****************", cursos.value);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-// onMounted(() => {
-//   getCursos();
-// });
-// --------------------------esto funcion con la api-----------------------------
 import axios from "axios";
 import { ref } from "vue";
 const cursos = ref();
 async function getCursos() {
   try {
-    let response = await axios.get("http://127.0.0.1:5000/cursos");
+    let response = await axios.get("https://back-learning.onrender.com/cursos");
     cursos.value = await response.data;
     console.log(cursos.value);
   } catch (error) {

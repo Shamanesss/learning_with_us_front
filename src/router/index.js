@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import InicioView from '../views/HomeView.vue'
-import UnauthorizedView from '../views/UnauthorizedView.vue'
-//import { supabase } from "../Clients/supabase"
-
-//let localUser;
+// import UnauthorizedView from '../views/UnauthorizedView.vue'
+import LoginView from '@/views/LoginView.vue';
+import { supabase } from "../Clients/supabase";
+let localUser;
 
 
 
@@ -17,7 +17,8 @@ const routes = [
   {
     path: '/secret',
     name: 'secret',
-    component: () => import('../views/CursosSecret.vue')
+    component: () => import('../views/CursosSecret.vue'),
+    meta: { requiresAuth: true }
   },
 
   {
@@ -27,21 +28,21 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/CursosView.vue'),
-    //meta: { requiresAuth: true }
+    meta: { requiresAuth: true }
   },
 
   {
     path: '/login',
     name: 'login',
 
-    component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
+    component: LoginView
   },
-  {
-    path: '/unauthotrized',
-    name: 'unauthorized',
+  // {
+  //   path: '/sinautorizacion',
+  //   name: 'sinautorizacion',
 
-    component: UnauthorizedView
-  },
+  //   component: UnauthorizedView
+  // },
   {
     path: '/register',
     name: 'register',
@@ -73,28 +74,29 @@ const router = createRouter({
 
 //get user
 
-// async function getUser(next) {
-// 	localUser = await supabase.auth.getSession();
-// 	if (localUser.data.session == null) {
-// 		next('/unauthorized')
-// 	}
-// 	else {
-// 		next();
-// 	}
-// }
+async function getUser(next) {
+  localUser = await supabase.auth.getSession();
+  console.log(localUser.data.session)
+  if (localUser.data.session == null) {
+    next('/login')
+  }
+  else {
+    next();
+  }
+}
 
 
 
 //auth requirements
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.requiresAuth) {
-// getUsers(next)
-//     console.log("requires Auth");
-//   }
-//   else {
-//     next(); //allow access to public pages without auth check
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    getUser(next)
+    console.log("requires Auth");
+  }
+  else {
+    next(); //allow access to public pages without auth check
+  }
+});
 
 
 export default router

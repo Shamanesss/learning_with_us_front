@@ -1,7 +1,19 @@
 <template>
   <div class="about">
     <h1>This is protected content</h1>
-    <p id="account">Account: {{ account.data.session.user.email }}</p>
+    <template
+      v-if="
+        account &&
+        account.data &&
+        account.data.session &&
+        account.data.session.user
+      "
+    >
+      <p id="account">Account: {{ account.data.session.user.email }}</p>
+    </template>
+    <template v-else>
+      <p>Loading account information...</p>
+    </template>
     <p>Protect the secret password: **TMX$$</p>
   </div>
 </template>

@@ -1,29 +1,48 @@
 <template>
-  <div class="wrapper">
-    <div class="form-wrapper sign-up">
-      <h2>Registro</h2>
+  <div class="my-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">LOGIN</h3>
+            </div>
 
-      <div class="input-group">
-        <input type="name" required name="name" v-model="name" />
-        <label for="name">Name</label>
-      </div>
-      <div class="input-group">
-        <input type="email" required name="Email" v-model="email" />
-        <label for="email">Correo</label>
-      </div>
-      <div class="input-group">
-        <input type="password" required name="Password" v-model="password" />
-        <label for="password">Contraseña</label>
-      </div>
-      <button class="btn">Sign Up</button>
-      <button @click="createAccount" class="btn">Create</button>
-      <button @click="login" class="btn">login</button>
-      <button @click="seeCurrentUser" class="btn">See user</button>
-      <button @click="logout" type="submit" class="btn">logout</button>
-      <div class="sign-link">
-        <p>
-          Ya tienes cuenta <router-link to="/register">Sign In</router-link>
-        </p>
+            <div class="card-body">
+              <div class="form-group text-start mb-3">
+                <label class="form-label" for="email"> Email </label>
+                <input
+                  class="form-control w-100 mx-auto"
+                  name="email"
+                  type="text"
+                  v-model="email"
+                  required
+                />
+              </div>
+
+              <div class="form-group text-start mb-3">
+                <label class="form-label" for="password"> Password </label>
+                <input
+                  class="form-control w-100 mx-auto"
+                  name="password"
+                  type="password"
+                  v-model="password"
+                  required
+                />
+              </div>
+              <button @click="login" class="btn">Iniciar Session</button>
+              <div class="sign-link">
+                <p>
+                  Si no tienes cuenta
+                  <router-link to="/register" class="registrate"
+                    >Registrate</router-link
+                  >
+                </p>
+              </div>
+              <p id="usuario_creado"></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -36,26 +55,7 @@ import { supabase } from "../Clients/supabase";
 //connect inputs
 let email = ref("");
 let password = ref("");
-let name = ref("");
 
-//Create account
-
-async function createAccount() {
-  const { data, error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value,
-    options: {
-      data: {
-        full_name: name.value,
-      },
-    },
-  });
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(data);
-  }
-}
 //login
 async function login() {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -66,78 +66,20 @@ async function login() {
     console.log(error);
   } else {
     console.log(data);
+    window.location.reload();
   }
 }
-//seeCurrentUser
-async function seeCurrentUser() {
-  const localUser = await supabase.auth.getSession();
-  console.log(localUser);
-}
-//logout
-async function logout() {
-  const { error } = await supabase.auth.signOut();
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("Logout has been successfull");
-  }
-}
-
-// async function getCursos() {
-//   try {
-//     const response = await axios.get(`${ApiUrl}/cursos?select=*`, {
-//       headers: {
-//         apikey: apikey,
-//         Authorization: autorizacion,
-//       },
-//     }); // Cambia la URL de la API según tu configuración
-//     cursos.value = await response.data;
-//     console.log("****************", cursos.value);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-// onMounted(() => {
-//   getUsers();
-// });
 </script>
 <style scoped>
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-}
-
-.form-wrapper {
-  width: 400px;
+.card {
   background-image: url(../assets/bg_degradado.png);
   background-position: center;
   background-size: cover;
-  padding: 20px;
+  padding: 0.6rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.input-group input {
-  width: 100%;
-  height: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.input-group label {
-  margin-bottom: 5px;
-}
-
 .btn {
   position: relative;
   top: 0;
@@ -155,7 +97,7 @@ async function logout() {
   outline: none;
 }
 .sign-link a {
-  color: forestgreen;
+  color: rgb(254, 254, 254);
 }
 
 .sign-link a:hover {
@@ -177,5 +119,8 @@ h2 {
 .btn:active {
   background-color: #2773d0;
   color: white;
+}
+.registrate {
+  color: antiquewhite;
 }
 </style>

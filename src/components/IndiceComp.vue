@@ -4,7 +4,7 @@
       <img src="../assets/Diseno.png" alt="imagen lateral" />
     </div>
     <div class="right-column">
-      <h2 v-if="indices.length > 0">{{ indices[0].titulo }}</h2>
+      <h1 v-if="indices.length > 0">{{ indices[0].titulo }}</h1>
       <div v-for="indice in indices" :key="indice.idlecciones" class="puntos">
         <ul class="centered-list">
           <a :href="`/leccion/${indice.idlecciones}`"
@@ -74,29 +74,28 @@ getLecciones();
 .centered-list {
   text-align: center;
   display: inline-block;
-    font-size: 2rem;
-    list-style: none;
+  font-size: 2rem;
+  list-style: none;
+}
+h1 {
+  font-size: 2.5rem;
+  text-decoration-line: underline;
+  padding: 1.5rem;
 }
 
 img {
   height: 100%;
   max-width: 100%;
 }
-h2 {
-  text-align: center;
-  padding: 1rem;
-  text-decoration-line: underline;
-}
+
 @media (max-width: 767px) {
   .left-column {
     display: none;
-    
   }
-  .centered-list{
+  .centered-list {
     font-size: 1rem;
-
   }
-  .right-column{
+  .right-column {
     margin: 0.5rem;
   }
 }
@@ -113,6 +112,7 @@ h2 {
 
   .right-column {
     flex: 2;
+    margin: 1rem;
   }
 
   img {
@@ -120,9 +120,8 @@ h2 {
     width: 100%;
     height: 100vh;
   }
-  .centered-list{
+  .centered-list {
     font-size: 1.5rem;
-
   }
 }
 </style>
