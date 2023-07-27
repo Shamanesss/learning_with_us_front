@@ -10,22 +10,24 @@
             class="imagen-logo"
           />
         </a>
-        <div id="user-info">
-          <p
-            v-if="
-              account &&
-              account.data &&
-              account.data.session &&
-              account.data.session.user
-            "
-          >
-            {{ account.data.session.user.user_metadata.full_name }}
-          </p>
+        <div class="container-user">
+          <div id="user-info">
+            <p
+              v-if="
+                account &&
+                account.data &&
+                account.data.session &&
+                account.data.session.user
+              "
+            >
+              {{ account.data.session.user.user_metadata.full_name }}
+            </p>
 
-          <p v-else></p>
-        </div>
-        <div>
-          <button class="btn_color" @click="logout">Cerrar sesión</button>
+            <p v-else></p>
+          </div>
+          <div>
+            <button class="btn_color" @click="logout">Cerrar sesión</button>
+          </div>
         </div>
       </div>
       <!-- Lista de enlaces -->
@@ -69,11 +71,19 @@ async function getSession() {
 }
 </script>
 <style scoped>
+.container-user {
+  display: flex;
+  align-items: center;
+}
+p {
+  display: inline-block;
+}
 .color_bg {
   background-color: #3e5e84;
 }
 #user-info {
   color: white;
+  margin-right: 0.6rem;
 }
 #color_item .color_item {
   color: white;
