@@ -43,13 +43,14 @@ const routes = [
     path: '/leccion/:idleccion',
     name: 'leccion',
     component: () => import(/* webpackChunkName: "login" */ '../views/LeccionView.vue'),
-    props: true
+    props: true,
+    meta: { requiresAuth: true }
   },
   {
     path: '/lecciones/:idlecciones',
     name: 'lista-lecciones',
     component: () => import(/* webpackChunkName: "login" */ '../views/ListaLecciones.vue'),
-
+    meta: { requiresAuth: true }
   }
 
 ];

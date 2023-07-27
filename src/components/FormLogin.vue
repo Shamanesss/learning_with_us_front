@@ -66,6 +66,8 @@ async function login() {
     console.log(error);
   } else {
     console.log(data);
+    email.value = "";
+    password.value = "";
     window.location.reload();
   }
 }
